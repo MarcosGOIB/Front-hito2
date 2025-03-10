@@ -10,10 +10,10 @@ import './navbar.css';
 
 const NavbarComponent = () => {
 
-  // Estado para controlar la visibilidad del modal
+  
   const [showModal, setShowModal] = useState(false);
 
-  // Estado para manejar la autenticación y el usuario
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
   
 
-  // Obtener datos del carrito del contexto
+ 
   const { getCartTotal, getItemsCount } = useCart();
   const cartTotal = getCartTotal();
   const itemsCount = getItemsCount();
@@ -35,7 +35,7 @@ const NavbarComponent = () => {
   const handleCloseModal = () => setShowModal(false);
 
 
-  // Función para verificar el token y obtener información del usuario
+  
   const checkAuthStatus = async () => {
     setLoading(true);
     const token = localStorage.getItem('token');
@@ -68,7 +68,7 @@ const NavbarComponent = () => {
   };
 
 
-  // Función de inicio de sesión
+ 
   const handleLogin = async (token, user) => {
     localStorage.setItem('token', token);
     await checkAuthStatus(); 
@@ -76,7 +76,7 @@ const NavbarComponent = () => {
   };
 
 
-  // Función de cierre de sesión
+  
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
@@ -96,7 +96,7 @@ const NavbarComponent = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Comprobar si el usuario es administrador
+ 
   const isAdmin = userData && userData.role === 'admin';
 
   return (
